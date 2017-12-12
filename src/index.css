@@ -7,21 +7,18 @@ body {
 .menu-item {
   color: #222;
   text-decoration: none;
-  line-height: 62px;
 }
 
-.dropdown-menu > li > a {
-  color: #006e78 !important;
-  font-size: 1.1em !important;
-  letter-spacing: 0.8px;
+#menu-title {
+  color: #222;
 }
 
-.navbar-toggle {
-  border: none;
-}
-
-navbar-toggle:hover {
-  color: #fff;
+.navbar-items {
+  display: flex;
+  justify-content: space-between;
+  flex: 0.5;
+  list-style-type: none;
+  line-height: 62px !important;
 }
 
 .hr-navbar {
@@ -30,13 +27,54 @@ navbar-toggle:hover {
   margin: 0;
 }
 
-.navbar {
-  display: flex;
-  align-content: space-between;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 0px;
-  border-color: #006e78;
-  height: 60px;
+.burger-icon {
+  display: none;
+}
+
+@media screen and (max-width: 412px) {
+  .navbar-items li:not(:first-child) {
+    display: none;
+  }
+  .navbar-items li.icon {
+    position: relative;
+  }
+
+  .navbar-items .menu-item {
+    color: red;
+  }
+
+  .burger-icon {
+    display: block;
+  }
+
+  .navbar {
+    display: flex;
+    align-content: space-around;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 0px;
+    border-color: #006e78;
+    height: 60px;
+  }
+
+  .navbar-is-open {
+    /* Put CSS here to reshow the navbar how you want when its open on mobil */
+  }
+}
+
+@media screen and (max-width: 412px) {
+  .navbar-items.responsive {
+    position: relative;
+  }
+  .navbar-items.responsive li.burger-icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar-items.responsive li {
+    float: none;
+    display: block;
+    text-align: left;
+  }
 }
 
 .navbar-nav > li > a {

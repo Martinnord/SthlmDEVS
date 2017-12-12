@@ -1,24 +1,47 @@
 import React, { Component } from 'react'
-import { Input, Menu } from 'semantic-ui-react'
+import BurgerMenu from './burgermenu'
 import '../index.css'
 
 // TODO: Make this a functional component
 
-const Navbar = () => {
-  return (
-    <div className="navbar">
-      <a id="menu-title">STHMLdevs</a>
-      <a className="menu-item" href="#">
-        OM OSS
-      </a>
-      <a className="menu-item" href="#">
-        PROJEKT
-      </a>
-      <a className="menu-item" href="#">
-        KONTAKT
-      </a>
-    </div>
-  )
-}
+export default class Navbar extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      responsive: false
+    }
+  }
 
-export default Navbar
+  handleBurger() {
+    this.setState({
+      responsive: !this.state.responsive
+    })
+  }
+  render() {
+    return (
+      <div>
+        <ul
+          className={`navbar-items ${this.state.responsive
+            ? 'responsive'
+            : ''}`}
+        >
+          <li className="menu-item">
+            <a>SthlmDEVS</a>
+          </li>
+          <li className="menu-item">
+            <a href="#">OM OSS</a>
+          </li>
+          <li className="menu-item">
+            <a href="#">PROJEKT</a>
+          </li>
+          <li className="menu-item">
+            <a href="#">KONTAKT</a>
+          </li>
+          <a className="burger-icon" onClick={() => this.handleBurger()}>
+            hej
+          </a>
+        </ul>
+      </div>
+    )
+  }
+}
